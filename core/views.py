@@ -1,10 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.shortcuts import redirect
 from django import forms
-from django.views.generic import TemplateView
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)
@@ -13,7 +13,7 @@ class LoginForm(forms.Form):
 class LoginView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('bi_page')  
+    success_url = reverse_lazy('bi_page')  # URL da página de sucesso
 
     def form_valid(self, form):
         username = form.cleaned_data.get('username')
@@ -23,8 +23,9 @@ class LoginView(FormView):
             login(self.request, user)
             return redirect(self.get_success_url())
         else:
-            messages.error(self.request, 'Usuario ou senha incorretos')
+            messages.error(self.request, 'Usuário ou senha incorretos')
             return self.form_invalid(form)
 
-class BIView(TemplateView):
-    template_name = 'bi.html' 
+class BIView(LoginRequiredMixin, TemplateView):
+    template_name = 'bi.html'
+    login_url = reverse_lazy('login')  # URL para onde redirecionar se não estiver logado
