@@ -27,4 +27,4 @@ class LoginView(FormView):
             return self.form_invalid(form)
 
 class BIView(TemplateView):
-    template_name = 'bi.html'  # Renderizando o template 'bi.html'
+    template_name = 'bi.html' 
