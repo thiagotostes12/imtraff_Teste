@@ -40,6 +40,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+#logo-img {
+    max-width: 150px;
+    margin-bottom: 10px; /* Espaço entre o logo e o título PowerBI */
+  }
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8317,9 +8321,9 @@ textarea.form-control {
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #fbceb5; }
+  color: #fff; }
   .checkbox-primary input:checked ~ .checkmark:after {
-    color: #fbceb5; }
+    color: #fff; }
 
 .btn {
   cursor: pointer;

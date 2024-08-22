@@ -13,7 +13,7 @@ class LoginForm(forms.Form):
 class LoginView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('bi_page')  # Definindo o redirecionamento para 'bi_page'
+    success_url = reverse_lazy('bi_page')  
 
     def form_valid(self, form):
         username = form.cleaned_data.get('username')
